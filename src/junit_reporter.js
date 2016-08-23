@@ -219,13 +219,18 @@
             };
 
         var __suites = {}, __specs = {};
+        function getId(id) {
+            return id.split(':')[1];
+        }
         function getSuite(suite) {
-            __suites[suite.id] = extend(__suites[suite.id] || {}, suite);
-            return __suites[suite.id];
+            var id = getId(suite.id);
+            __suites[id] = extend(__suites[id] || {}, suite);
+            return __suites[id];
         }
         function getSpec(spec) {
-            __specs[spec.id] = extend(__specs[spec.id] || {}, spec);
-            return __specs[spec.id];
+            var id = getId(spec.id);
+            __specs[id] = extend(__specs[id] || {}, spec);
+            return __specs[id];
         }
 
         self.jasmineStarted = function(summary) {
@@ -308,9 +313,6 @@
 
         self.getOrWriteNestedOutput = function(suite) {
             var output = suiteAsXml(suite);
-            for (var i = 0; i < suite._suites.length; i++) {
-                output += self.getOrWriteNestedOutput(suite._suites[i]);
-            }
             if (self.consolidateAll || self.consolidate && suite._parent) {
                 return output;
             } else {
@@ -419,6 +421,9 @@
 
             for (var i = 0; i < suite._specs.length; i++) {
                 xml += specAsXml(suite._specs[i]);
+            }
+            for (var i = 0; i < suite._suites.length; i++) {
+                xml += suiteAsXml(suite._suites[i]);
             }
             xml += '\n </testsuite>';
             return xml;
