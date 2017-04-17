@@ -220,7 +220,8 @@
 
         var __suites = {}, __specs = {};
         function getId(id) {
-            return id.split(':')[1];
+            const arr = id.split(':');
+            return arr.length > 1 ? arr[1] : id;
         }
         function getSuite(suite) {
             var id = getId(suite.id);
