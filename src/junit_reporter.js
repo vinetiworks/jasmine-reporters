@@ -220,7 +220,6 @@
 
         var __suites = {}, __specs = {};
         function getId(id) {
-            console.log('am i even called?');
             const arr = id.split(':');
             return arr.length > 1 ? arr[1] : id;
         }
