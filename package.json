@@ -1,8 +1,8 @@
 {
   "author": "Larry Myers",
-  "name": "jasmine-reporters",
-  "description": "Reporters for the Jasmine BDD Framework",
-  "version": "2.2.1",
+  "name": "vineti-jasmine-reporters",
+  "description": "Fork of Reporters for the Jasmine BDD Framework",
+  "version": "2.2.2",
   "homepage": "https://github.com/larrymyers/jasmine-reporters",
   "maintainers": "Ben Loveridge <bloveridge@gmail.com>",
   "scripts": {
